@@ -373,7 +373,6 @@ public static int optremoval(LinkedList<Long> list, Hashtable<Long, LinkedList<I
 				max=dists[j];
 				maxind=j;
 				}
-			if(max==dists[j])
 				}	
 	return maxind;
 			
