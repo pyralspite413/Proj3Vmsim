@@ -4,7 +4,7 @@ import java.io.*;
 	public class vmsim{
 		
 		
-
+	@SuppressWarnings("unchecked") 
 	public static void main(String[] args) throws Exception{
 		//KB = 2^10 =1024
 		final int kiloByte= 1024; 
@@ -61,6 +61,7 @@ import java.io.*;
 		
 		
 		}
+		@SuppressWarnings("unchecked") 
 		private static boolean isDirty(LinkedList<Boolean> list, int index){
 			if(list.get(index).booleanValue()==true){
 				return true;
@@ -68,11 +69,13 @@ import java.io.*;
 			else return false;
 		}
 		
+		@SuppressWarnings("unchecked") 
 		//helper method determines size of log base 2 of a number - used for offset
 		public static int log2(int n){
 			int res=(int) (Math.log(n)/Math.log(2));
 			return res;
 		}
+		@SuppressWarnings("unchecked") 
 		public static void printList(LinkedList<Long> list, LinkedList<Boolean> dlist){
 			for(int i=0;i<list.size();i++){
 				System.out.print("index:"+i+":"+Long.toHexString(list.get(i)));
@@ -83,6 +86,7 @@ import java.io.*;
 			}
 			
 		}
+		@SuppressWarnings("unchecked") 
 		public static int indexOf(LinkedList<Long> list, long address){
 			int i;
 			for(i=0;i<list.size();i++){
@@ -94,6 +98,7 @@ import java.io.*;
 			return -1;
 		}
 		
+	@SuppressWarnings("unchecked") 
 	public static int[] LRU(int pagesize,int numFrames,int proc0Frames,int proc1Frames,int offset, String tracefile)throws Exception{
 			LinkedList p0= new LinkedList<Long>();
 			LinkedList p0dirty=new LinkedList<Boolean>();
@@ -125,6 +130,7 @@ import java.io.*;
 							pagefaults++;
 							if(p0.size()==proc0Frames){
 								p0.remove();
+								@SuppressWarnings("unchecked")
 								Boolean dRemoved=(Boolean)p0dirty.remove();
 								if(dRemoved.booleanValue()==true){
 									//disk write
@@ -137,7 +143,9 @@ import java.io.*;
 					}
 					else{ //address found in p0 list
 						//need to remove the index, and re add to beginning of list
+						@SuppressWarnings("unchecked")
 						Long removed=(Long)p0.remove(ind);
+						@SuppressWarnings("unchecked")
 						Boolean dremoved=(Boolean)p0dirty.remove(ind);
 						if(dremoved.booleanValue()==true|| dirty==true){
 							dirty=true;
@@ -153,6 +161,7 @@ import java.io.*;
 							pagefaults++;
 							if(p1.size()==proc1Frames){
 								p1.remove();
+								@SuppressWarnings("unchecked") 
 								Boolean dRemoved=(Boolean)p1dirty.remove();
 								if(dRemoved.booleanValue()==true){
 									//disk write
@@ -164,7 +173,9 @@ import java.io.*;
 					}
 					else{ //address found in p0 list
 						//need to remove the index, and re add to beginning of list
+						@SuppressWarnings("unchecked")
 						Long removed=(Long)p1.remove(ind);
+						@SuppressWarnings("unchecked")
 						Boolean dremoved=(Boolean)p1dirty.remove(ind);
 						if(dremoved.booleanValue()==true|| dirty==true){
 							dirty=true;
@@ -184,7 +195,7 @@ import java.io.*;
 			
 			return data;
 		}
-		
+		@SuppressWarnings("unchecked") 
 		public static int[]opt(int pagesize,int numFrames,int proc0Frames,int proc1Frames,int offset, String tracefile)throws Exception{
 			//hash table with Long, Linked List 
 			//another with the dirty bits for the tables?
@@ -264,7 +275,9 @@ import java.io.*;
 								//look through the page table, for each entry calculate the numaccesses till they are accessed again
 								//index with longest dist, removed.
 								int key=optremoval(p0,p0table,num);
+								@SuppressWarnings("unchecked")
 								Long removed=(Long) p0.remove(key);
+								@SuppressWarnings("unchecked")
 								Boolean drem=(Boolean) p0dirty.remove(key);
 								if(drem.booleanValue()==true){ 
 									memWrite++;
@@ -280,7 +293,9 @@ import java.io.*;
 							
 						}
 						else{//page hit
+							@SuppressWarnings("unchecked")
 							Long removed=(Long)p0.remove(ind);
+							@SuppressWarnings("unchecked")
 							Boolean dremoved=(Boolean)p0dirty.remove(ind);
 							if(dremoved.booleanValue()==true|| dirty==true){
 								dirty=true;
@@ -306,7 +321,9 @@ import java.io.*;
 							//look through the page table, for each entry calculate the numaccesses till they are accessed again
 							//index with longest dist, removed.
 							int key=optremoval(p1,p1table,num);
+							@SuppressWarnings("unchecked")
 							Long removed=(Long) p1.remove(key);
+							@SuppressWarnings("unchecked") 
 							Boolean drem=(Boolean) p1dirty.remove(key);
 							if(drem.booleanValue()==true){ 
 								memWrite++;
@@ -321,7 +338,9 @@ import java.io.*;
 						}
 					}
 					else{//page hit
+						@SuppressWarnings("unchecked") 
 						Long removed=(Long)p1.remove(ind);
+						@SuppressWarnings("unchecked") 
 						Boolean dremoved=(Boolean)p1dirty.remove(ind);
 						if(dremoved.booleanValue()==true|| dirty==true){
 							dirty=true;
@@ -349,7 +368,7 @@ import java.io.*;
 		}
 		
 		
-		
+@SuppressWarnings("unchecked") 	
 public static int optremoval(LinkedList<Long> list, Hashtable<Long, LinkedList<Integer>> table, int num){
 	int[] dists=new int[list.size()];
 	for(int i=0;i<list.size();i++){
