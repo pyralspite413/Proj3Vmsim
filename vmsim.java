@@ -57,7 +57,13 @@ import java.io.*;
 		if(mode==1) 
 			stats=opt(pagesize,numframes, proc0Frames,proc1Frames,offset,tracefile);
 			
-		System.out.println("mem accesses:"+ stats[0]+" page faults:"+stats[1]+" mem writes:"+stats[2]);
+		System.out.println("Algorithm: "+args[1]);
+		System.out.println("Number of frames: "+numframes);
+		System.out.println("Page size: "+pagesize+" KB");
+		System.out.println("total memory accesses: "+stats[0]);
+		System.out.println("total page faults: "+ stats[1]);
+		System.out.println("total writes to disk: "+stats[2]);
+		
 		
 		
 		}
