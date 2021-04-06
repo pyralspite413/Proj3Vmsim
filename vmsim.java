@@ -59,7 +59,7 @@ import java.io.*;
 			
 		System.out.println("Algorithm: "+args[1]);
 		System.out.println("Number of frames: "+numframes);
-		System.out.println("Page size: "+pagesize+" KB");
+		System.out.println("Page size: "+(pagesize/1024)+" KB");
 		System.out.println("total memory accesses: "+stats[0]);
 		System.out.println("total page faults: "+ stats[1]);
 		System.out.println("total writes to disk: "+stats[2]);
